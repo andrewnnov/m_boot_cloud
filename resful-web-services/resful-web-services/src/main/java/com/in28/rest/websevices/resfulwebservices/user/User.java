@@ -9,6 +9,11 @@ public class User {
 	private String name;
 	
 	private Date birthDate;
+	
+	
+	protected User() {
+		
+	}
 
 	public Integer getId() {
 		return id;
