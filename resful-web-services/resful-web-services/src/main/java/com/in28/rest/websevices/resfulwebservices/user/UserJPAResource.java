@@ -27,9 +27,6 @@ import com.in28.rest.websevices.resfulwebservices.exception.UserNotFoundExceptio
 @RestController
 public class UserJPAResource {
 	
-	@Autowired
-	private UserDAOService service;
-	
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -62,7 +59,7 @@ public class UserJPAResource {
 	
 	@PostMapping("/jpa/users")
 	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {		
-		User saveUser = service.save(user);
+		User saveUser = userRepository.save(user);
 		
 		//created
 		// /user/4
@@ -75,11 +72,9 @@ public class UserJPAResource {
 	@DeleteMapping("/jpa/users/{id}")
 	public void deleteUser(@PathVariable int id) {
 		
-		User user = service.deleteById(id);
+		userRepository.deleteById(id);
 		
-		if(user==null) {
-			throw new UserNotFoundException("id-" + id);
-		}		
+			
 			
 	}
 
