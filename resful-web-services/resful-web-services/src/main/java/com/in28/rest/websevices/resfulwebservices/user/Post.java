@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Post {
 	
@@ -15,6 +17,7 @@ public class Post {
 	private String description;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private User user;
 	
 	public Integer getId() {
@@ -29,6 +32,14 @@ public class Post {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 	
 	
 
